@@ -17,8 +17,6 @@
 			max-width: 300px;
 			margin: 20px auto;
 			font-family: fantasy;
-
-
 		}
 		#field td  {
 			width: 50px;
@@ -40,8 +38,6 @@
 			font-family: fantasy;
 			margin: 20px auto;
 			text-shadow: 2px 2px 2px blanchedalmond;
-
-			
 		}
 		.interactive{
 			min-width: 200px;
@@ -51,7 +47,10 @@
 		}
 
 	</style>
+
 </head>
+
+
 <body>
 
 	<div class="game">
@@ -72,8 +71,6 @@
 				<td></td>
 				<td></td>
 			</tr>
-			
-
 		</table>
 
 		<div class="interactive">
@@ -87,9 +84,7 @@
 			<button class="restartButton">restart</button>
 		</div>
 
-
 	</div>
-
 
 
 	<script type="text/javascript">
@@ -119,8 +114,6 @@
 			for(let cell of cells){
 				cell.addEventListener('click', function step(){
 					if(stop==false){
-						
-
 						this.innerHTML=['X','O'][i%2];
 						if(this.innerHTML==='X'){
 							message.innerHTML='go O';
@@ -128,34 +121,29 @@
 						else{
 							message.innerHTML='go X';
 						};
+						i++;
+						cell.removeEventListener('click',step);
 
-				
-				i++;
-				cell.removeEventListener('click',step);
-				console.log(countOfDraws)
-
-				if(isVictory(cells)){
-					message.innerHTML=this.innerHTML+' win!!!';
-					stop=true;
-					if(this.innerHTML==='X'){
-						countOfWinsX++
-						statisticX.innerHTML='Выиграл X:  '+countOfWinsX;
-					}
-					else{
-						countOfWinsO++
-						statisticO.innerHTML='Выиграл O:  '+countOfWinsO;
-					}
-				}
-				else if(i==9){
-					stop=true;
-					console.log(countOfDraws)
-					message.innerHTML='ничья';
-					countOfDraws++;
-					console.log(countOfDraws)
-					statisticDraws.innerHTML='Draw:  '+countOfDraws;
-				}
-			}	
-		})
+						if(isVictory(cells)){
+							message.innerHTML=this.innerHTML+' win!!!';
+							stop=true;
+							if(this.innerHTML==='X'){
+								countOfWinsX++
+								statisticX.innerHTML='Выиграл X:  '+countOfWinsX;
+							}
+							else{
+								countOfWinsO++
+								statisticO.innerHTML='Выиграл O:  '+countOfWinsO;
+							}
+						}
+						else if(i==9){
+							stop=true;
+							message.innerHTML='ничья';
+							countOfDraws++;
+							statisticDraws.innerHTML='Draw:  '+countOfDraws;
+						}
+					}	
+				})
 			}
 		}
 		function isVictory(cells){
@@ -203,7 +191,6 @@
 		statisticDraws.innerHTML='Draw:  '+countOfDraws;
 	}
 
-
-
 </script>
+
 </body>
